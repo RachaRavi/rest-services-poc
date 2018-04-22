@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello jQuery</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url: "http://rest-service.guides.spring.io/greeting"
+            }).then(function(data) {
+               $('.greeting-id').append(data.id);
+               $('.greeting-content').append(data.content);
+            });
+            $( "#submit" ).click(function() {
+            	  var min= $('#min').val();
+            	  var max= $('#max').val();
+            	 // alert( "Min:"+min +" and "+ "Max:"+ max );
+            	  $('#response').empty();
+            	  $.ajax({
+                      url: "http://localhost:8080/api/v1.0/number/range?min="+min+"&max="+max
+                    		  
+                  }).then(function(data) {
+                	 // alert(data);
+                     $('#response').append(JSON.stringify(data));
+                  });
+            });
+        });
+        
+        </script>
+    </head>
+
+    <body>
+    	<div>
+    		Minimum: <input type="text" id="min"/> <br/>
+    		Maximum: <input type="text" id="max" /> <br/>
+    		<button type="button" id="submit"> Submit</button> 
+    	</div>
+        <div>
+          <hr/>
+        </div>
+        <div id="response">
+          
+        </div>
+        <hr/>
+    </body>
+</html>
