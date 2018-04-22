@@ -88,8 +88,6 @@ public class RestServiceController {
     	headers.setAccessControlMaxAge(1000*60*30);
     	headers.setAccessControlAllowMethods((Arrays.asList(HttpMethod.GET,HttpMethod.POST,
     			HttpMethod.PUT,HttpMethod.OPTIONS,HttpMethod.DELETE,HttpMethod.TRACE)));
-    	headers.setAccessControlAllowHeaders(Arrays.asList("Accept","Content-Type","X-PINGOTHER"));
-    	headers.set("Cache-Control", "no-cache");
     	return headers;
     }
 }
